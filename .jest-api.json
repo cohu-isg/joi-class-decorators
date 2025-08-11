@@ -7,12 +7,25 @@
   "testEnvironment": "node",
   "testRegex": "test/api/.*\\.spec\\.ts$",
   "transform": {
-    "^.+\\.(t|j)s$": "ts-jest"
-  },
-  "globals": {
-    "ts-jest": {
-      "tsconfig": "<rootDir>/test/api/tsconfig.json"
-    }
+    "^.+\\.(t|j)s$": ["@swc/jest", {
+      "jsc": {
+        "target": "es2022",
+        "parser": {
+          "syntax": "typescript",
+          "decorators": true,
+          "dynamicImport": true
+        },
+        "transform": {
+          "legacyDecorator": true,
+          "decoratorMetadata": true
+        },
+        "keepClassNames": true
+      },
+      "module": {
+        "type": "commonjs"
+      },
+      "sourceMaps": "inline"
+    }]
   },
   "setupFilesAfterEnv": [
     "<rootDir>/test/api/setup.ts"
