@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable unused-imports/no-unused-vars-ts */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { JoiSchemaOptions } from '../../../src';
 
@@ -11,7 +10,7 @@ describe('@JoiSchemaOptions()', () => {
         @JoiSchemaOptions({
           abortEarly: true,
         })
-        class test {
+        class _test {
           prop!: string;
         }
       } catch (error_) {
@@ -27,12 +26,12 @@ describe('@JoiSchemaOptions()', () => {
           // @ts-ignore
           invalid: 'false',
         })
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid Joi.ValidationOptions');
+        expect((error as Error).message).toContain('Invalid Joi.ValidationOptions');
       }
     });
 
@@ -42,7 +41,7 @@ describe('@JoiSchemaOptions()', () => {
         @JoiSchemaOptions(['group1', 'group2'], {
           abortEarly: true,
         })
-        class test {
+        class _test {
           prop!: string;
         }
       } catch (error_) {
@@ -58,7 +57,7 @@ describe('@JoiSchemaOptions()', () => {
         @JoiSchemaOptions([Symbol('group1'), Symbol('group2')], {
           abortEarly: true,
         })
-        class test {
+        class _test {
           prop!: string;
         }
       } catch (error_) {
@@ -74,12 +73,12 @@ describe('@JoiSchemaOptions()', () => {
         @JoiSchemaOptions([['invalid']], {
           abortEarly: true,
         })
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -90,12 +89,12 @@ describe('@JoiSchemaOptions()', () => {
           // @ts-ignore
           invalid: true,
         })
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -106,12 +105,12 @@ describe('@JoiSchemaOptions()', () => {
           // @ts-ignore
           invalid: true,
         })
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid Joi.ValidationOptions');
+        expect((error as Error).message).toContain('Invalid Joi.ValidationOptions');
       }
     });
 
@@ -122,12 +121,12 @@ describe('@JoiSchemaOptions()', () => {
           // @ts-ignore
           invalid: true,
         })
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid Joi.ValidationOptions');
+        expect((error as Error).message).toContain('Invalid Joi.ValidationOptions');
       }
     });
 
@@ -135,12 +134,12 @@ describe('@JoiSchemaOptions()', () => {
       try {
         @JoiSchemaOptions({})
         @JoiSchemaOptions({})
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Cannot redefine schema options');
+        expect((error as Error).message).toContain('Cannot redefine schema options');
       }
     });
 
@@ -148,12 +147,12 @@ describe('@JoiSchemaOptions()', () => {
       try {
         @JoiSchemaOptions(['group1'], {})
         @JoiSchemaOptions(['group1'], {})
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Cannot redefine schema options');
+        expect((error as Error).message).toContain('Cannot redefine schema options');
       }
     });
 
@@ -162,7 +161,7 @@ describe('@JoiSchemaOptions()', () => {
       try {
         @JoiSchemaOptions(['group1'], {})
         @JoiSchemaOptions(['group2'], {})
-        class test {
+        class _test {
           prop!: string;
         }
       } catch (error_) {

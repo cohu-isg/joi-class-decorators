@@ -5,7 +5,7 @@ export type JoiValidationGroup = string | symbol;
 export const DEFAULT: JoiValidationGroup = Symbol('JOI_CLASSDECORATORS_DEFAULT_GROUP');
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface Constructor<T = any> extends Function {
+export interface Constructor<T = any> {
   new (...args: unknown[]): T;
 }
 

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/unified-signatures */ // Unified signatures are harder to read
+// Unified signatures are harder to read
 import 'reflect-metadata';
 
 import * as Joi from 'joi';

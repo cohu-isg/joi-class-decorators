@@ -81,10 +81,8 @@ export function getTypeSchema(
     let protoOptions: Joi.ValidationOptions;
     // Decorator was used to specify options on this proto
     if (optionsMeta && group && optionsMeta.has(group)) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       protoOptions = optionsMeta.get(group)!;
     } else if (optionsMeta && optionsMeta.has(DEFAULT)) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       protoOptions = optionsMeta.get(DEFAULT)!;
     } else {
       protoOptions = {};
@@ -94,10 +92,8 @@ export function getTypeSchema(
     let protoSchemaFn: ObjectSchemaCustomizerFn | undefined;
     // Decorator was used to specify options on this proto
     if (customizerMeta && group && customizerMeta.has(group)) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       protoSchemaFn = customizerMeta.get(group)!;
     } else if (customizerMeta && customizerMeta.has(DEFAULT)) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       protoSchemaFn = customizerMeta.get(DEFAULT)!;
     }
 
@@ -112,10 +108,8 @@ export function getTypeSchema(
       let schemaFn: SchemaCustomizerFn | undefined;
       let schemaArrayFn: SchemaCustomizerFn | undefined | null;
       if (propMeta && group && propMeta.has(group)) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ({ schemaOrType, schemaFn, schemaArrayFn } = propMeta.get(group)!);
       } else if (propMeta && propMeta.has(DEFAULT)) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ({ schemaOrType, schemaFn, schemaArrayFn } = propMeta.get(DEFAULT)!);
       } else {
         continue;

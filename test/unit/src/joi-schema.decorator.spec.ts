@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable unused-imports/no-unused-vars-ts */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import * as Joi from 'joi';
 
@@ -10,7 +9,7 @@ describe('@JoiSchema()', () => {
     it('should accept (Joi.Schema)', () => {
       let error;
       try {
-        class test {
+        class _test {
           @JoiSchema(Joi.string())
           prop!: string;
 
@@ -29,7 +28,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           @JoiSchema(type)
           prop!: string;
         }
@@ -45,7 +44,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           @JoiSchema(type, (schema: Joi.Schema) => schema.required())
           prop!: string;
         }
@@ -61,7 +60,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           @JoiSchema([type])
           prop!: string;
         }
@@ -77,7 +76,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           @JoiSchema([type], (schema: Joi.Schema) => schema.required())
           prop!: string;
         }
@@ -91,7 +90,7 @@ describe('@JoiSchema()', () => {
     it('should accept (groupStrings[], Joi.Schema)', () => {
       let error;
       try {
-        class test {
+        class _test {
           @JoiSchema(['group1', 'group2'], Joi.string())
           prop!: string;
         }
@@ -104,21 +103,21 @@ describe('@JoiSchema()', () => {
 
     it('should reject (INVALIDgroups[], Joi.Schema)', () => {
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema([['array']], Joi.string())
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
     it('should accept (groupSymbols[], Joi.Schema)', () => {
       let error;
       try {
-        class test {
+        class _test {
           @JoiSchema([Symbol('group1'), Symbol('group2')], Joi.string())
           prop!: string;
         }
@@ -134,7 +133,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema(['group1', 'group2'], type)
           prop!: string;
@@ -150,14 +149,14 @@ describe('@JoiSchema()', () => {
       class type {}
 
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema([['array']], type)
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -166,7 +165,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema(['group1', 'group2'], type, (schema: Joi.Schema) => schema.required())
           prop!: string;
@@ -183,7 +182,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema([Symbol('group1'), Symbol('group2')], type)
           prop!: string;
@@ -200,7 +199,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema([Symbol('group1'), Symbol('group2')], type, (schema: Joi.Schema) =>
             schema.required(),
@@ -218,14 +217,14 @@ describe('@JoiSchema()', () => {
       class type {}
 
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema([['array']], type, (schema: Joi.Schema) => schema.required())
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -234,7 +233,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema(['group1', 'group2'], [type])
           prop!: string;
@@ -250,14 +249,14 @@ describe('@JoiSchema()', () => {
       class type {}
 
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema([['array']], [type])
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -266,7 +265,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema(['group1', 'group2'], [type], (schema: Joi.Schema) => schema.required())
           prop!: string;
@@ -283,7 +282,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema([Symbol('group1'), Symbol('group2')], [type])
           prop!: string;
@@ -300,7 +299,7 @@ describe('@JoiSchema()', () => {
 
       let error;
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema([Symbol('group1'), Symbol('group2')], [type], (schema: Joi.Schema) =>
             schema.required(),
@@ -318,99 +317,99 @@ describe('@JoiSchema()', () => {
       class type {}
 
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema([['array']], [type], (schema: Joi.Schema) => schema.required())
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
     it('should reject (groupStrings[])', () => {
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema(['group1', 'group2'])
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
     it('should reject (string)', () => {
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema('foo')
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
     it('should reject (number)', () => {
       try {
-        class test {
+        class _test {
           // @ts-ignore
           @JoiSchema(3)
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
     it('should throw when called on a Symbol property', () => {
       const symb = Symbol('prop');
       try {
-        class test {
+        class _test {
           @JoiSchema(Joi.string())
           [symb]!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid target property (symbol)');
+        expect((error as Error).message).toContain('Invalid target property (symbol)');
       }
     });
 
     it('should throw when redefining the default group schema for a property', () => {
       try {
-        class test {
+        class _test {
           @JoiSchema(Joi.string())
           @JoiSchema(Joi.number())
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Cannot redefine schema');
+        expect((error as Error).message).toContain('Cannot redefine schema');
       }
     });
 
     it('should throw when redefining a custom group schema for a property', () => {
       try {
-        class test {
+        class _test {
           @JoiSchema(['group1'], Joi.string())
           @JoiSchema(['group1'], Joi.number())
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Cannot redefine schema');
+        expect((error as Error).message).toContain('Cannot redefine schema');
       }
     });
 
     it('should be callable twice on the same property for different groups', () => {
       let error;
       try {
-        class test {
+        class _test {
           @JoiSchema(['group1'], Joi.string())
           @JoiSchema(['group2'], Joi.number())
           prop!: string;

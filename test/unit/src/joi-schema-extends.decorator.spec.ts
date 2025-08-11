@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable unused-imports/no-unused-vars-ts */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { JoiSchemaExtends } from '../../../src';
 import { EXTENDS_PROTO_KEY } from '../../../src/internal/defs';
@@ -12,7 +11,7 @@ describe('@JoiSchemaExtends()', () => {
       let error;
       try {
         @JoiSchemaExtends(type)
-        class test {
+        class _test {
           prop!: string;
         }
       } catch (error_) {
@@ -26,12 +25,12 @@ describe('@JoiSchemaExtends()', () => {
       try {
         // @ts-ignore
         @JoiSchemaExtends('invalid')
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -41,12 +40,12 @@ describe('@JoiSchemaExtends()', () => {
       try {
         @JoiSchemaExtends(type)
         @JoiSchemaExtends(type)
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Cannot redefine parent type');
+        expect((error as Error).message).toContain('Cannot redefine parent type');
       }
     });
   });
@@ -55,11 +54,11 @@ describe('@JoiSchemaExtends()', () => {
     class type {}
 
     @JoiSchemaExtends(type)
-    class test {
+    class _test {
       prop!: string;
     }
 
-    const meta = Reflect.getOwnMetadata(EXTENDS_PROTO_KEY, test);
+    const meta = Reflect.getOwnMetadata(EXTENDS_PROTO_KEY, _test);
     expect(meta).toBe(type);
   });
 });

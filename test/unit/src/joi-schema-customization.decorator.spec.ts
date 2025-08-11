@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable unused-imports/no-unused-vars-ts */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { JoiSchemaCustomization } from '../../../src';
 
@@ -9,7 +8,7 @@ describe('@JoiSchemaCustomization()', () => {
       let error;
       try {
         @JoiSchemaCustomization(schema => schema.required())
-        class test {
+        class _test {
           prop!: string;
         }
       } catch (error_) {
@@ -25,12 +24,12 @@ describe('@JoiSchemaCustomization()', () => {
           // @ts-expect-error
           'abc',
         )
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -38,7 +37,7 @@ describe('@JoiSchemaCustomization()', () => {
       let error;
       try {
         @JoiSchemaCustomization(['group1', 'group2'], schema => schema.required())
-        class test {
+        class _test {
           prop!: string;
         }
       } catch (error_) {
@@ -52,7 +51,7 @@ describe('@JoiSchemaCustomization()', () => {
       let error;
       try {
         @JoiSchemaCustomization([Symbol('group1'), Symbol('group2')], schema => schema.required())
-        class test {
+        class _test {
           prop!: string;
         }
       } catch (error_) {
@@ -66,12 +65,12 @@ describe('@JoiSchemaCustomization()', () => {
       try {
         // @ts-ignore
         @JoiSchemaCustomization([['invalid']], schema => schema.required())
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -79,12 +78,12 @@ describe('@JoiSchemaCustomization()', () => {
       try {
         // @ts-ignore
         @JoiSchemaCustomization([['invalid']], 'abc')
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -96,12 +95,12 @@ describe('@JoiSchemaCustomization()', () => {
           // @ts-ignore
           'abc',
         )
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -113,12 +112,12 @@ describe('@JoiSchemaCustomization()', () => {
           // @ts-ignore
           'abc',
         )
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Invalid arguments');
+        expect((error as Error).message).toContain('Invalid arguments');
       }
     });
 
@@ -126,12 +125,12 @@ describe('@JoiSchemaCustomization()', () => {
       try {
         @JoiSchemaCustomization(schema => schema.required())
         @JoiSchemaCustomization(schema => schema.required())
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Cannot redefine schema customization function');
+        expect((error as Error).message).toContain('Cannot redefine schema customization function');
       }
     });
 
@@ -139,12 +138,12 @@ describe('@JoiSchemaCustomization()', () => {
       try {
         @JoiSchemaCustomization(['group1'], schema => schema.required())
         @JoiSchemaCustomization(['group1'], schema => schema.required())
-        class test {
+        class _test {
           prop!: string;
         }
         throw new Error('should not be thrown');
       } catch (error) {
-        expect(error.message).toContain('Cannot redefine schema customization function');
+        expect((error as Error).message).toContain('Cannot redefine schema customization function');
       }
     });
 
@@ -153,7 +152,7 @@ describe('@JoiSchemaCustomization()', () => {
       try {
         @JoiSchemaCustomization(['group1'], schema => schema.required())
         @JoiSchemaCustomization(['group2'], schema => schema.required())
-        class test {
+        class _test {
           prop!: string;
         }
       } catch (error_) {

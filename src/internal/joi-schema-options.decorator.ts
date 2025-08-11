@@ -26,7 +26,7 @@ export function JoiSchemaOptions(...args: unknown[]): ClassDecorator {
   try {
     Joi.string().options(options);
   } catch (error) {
-    error.message = `Invalid Joi.ValidationOptions: ${error.message}`;
+    (error as Error).message = `Invalid Joi.ValidationOptions: ${(error as Error).message}`;
     throw error;
   }
 
